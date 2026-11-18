@@ -32,3 +32,18 @@
 .drawerFoot p { display: flex; gap: var(--space-3); align-items: center; font-size: 0.875rem; color: var(--text-secondary); }
 .drawerFoot p svg { color: var(--accent-text); flex: none; }
 .drawerRing { left: -160px; bottom: -200px; width: 420px; height: 420px; }
+
+/* Motion */
+.nav a { position: relative; border-bottom: 0; }
+.nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--accent-text); transform: scaleX(0); transform-origin: right; transition: transform 350ms var(--ease-out); }
+.nav a:hover::after, .nav a[aria-current="page"]::after { transform: scaleX(1); transform-origin: left; }
+@media (prefers-reduced-motion: no-preference) {
+  .count { animation: pop 450ms var(--ease-out); }
+  .logo img { transition: transform 600ms var(--ease-out); }
+  .logo:hover img { transform: rotate(-12deg); }
+  .drawer { animation: drawer-in 350ms var(--ease-out); }
+  .drawerRing { animation: ring-float 14s var(--ease-in-out) infinite; }
+}
+@keyframes drawer-in { from { opacity: 0; transform: translateY(-12px); } }
+@keyframes pop { 0% { transform: scale(0.4); } 60% { transform: scale(1.18); } 100% { transform: scale(1); } }
+@keyframes ring-float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-14px, 12px); } }

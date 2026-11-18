@@ -4,7 +4,7 @@ import { categories, products } from "@/lib/products";
 import { generalEnquiry } from "@/lib/whatsapp";
 import ProductCard from "@/components/ProductCard";
 import Rail from "@/components/Rail";
-import { ButtonLink, ui } from "@/components/ui";
+import { ButtonLink, revealDelay, ui } from "@/components/ui";
 import { ChevronRight, Lens, Shield, Star, Truck } from "@/components/icons";
 import s from "./page.module.css";
 
@@ -39,7 +39,7 @@ export default function Home() {
             <HeroImage />
             <span className={`ring ${s.heroRing}`} aria-hidden="true" />
           </div>
-          <div className={s.heroText}>
+          <div className={`stagger ${s.heroText}`}>
             <p className="eyebrow">New season frames</p>
             <h1 className="display">Frames that speak before you do</h1>
             <p className="lead">Genuine optical frames and fashion glasses, fitted with your lenses and delivered across Nigeria.</p>
@@ -58,12 +58,12 @@ export default function Home() {
 
       <section className="section" style={{ borderTop: "1px solid var(--line-gold)" }}>
         <div className="container">
-          <div className="section-head">
+          <div className="section-head" data-reveal>
             <div><p className="eyebrow">Shop by category</p><h2 className="h2">Find your frame</h2></div>
           </div>
           <div className={s.cats}>
-            {categories.map((c) => (
-              <Link key={c.id} href={`/shop?category=${c.id}`} className={s.cat}>
+            {categories.map((c, i) => (
+              <Link key={c.id} href={`/shop?category=${c.id}`} className={s.cat} data-reveal style={revealDelay(i)}>
                 <div className={s.catMedia}><Image src={c.image} alt="" fill sizes="(max-width: 900px) 50vw, 25vw" /></div>
                 <span className={s.catLabel}>{c.label}<ChevronRight size={18} /></span>
               </Link>
@@ -73,7 +73,7 @@ export default function Home() {
       </section>
 
       <section className={`section ${s.featured}`}>
-        <div className="container section-head">
+        <div className="container section-head" data-reveal>
           <div><p className="eyebrow">Featured</p><h2 className="h2">This week’s favourites</h2></div>
           <Link href="/shop?sort=popular" className={`${ui.round} ${ui.roundSolid} ${s.viewAll}`} aria-label="View all bestsellers"><ChevronRight size={18} /></Link>
         </div>
@@ -84,7 +84,7 @@ export default function Home() {
 
       <section className="section" data-theme="light" style={{ background: "var(--bg)", color: "var(--text)" }}>
         <div className="container">
-          <div className={`section-head ${s.whyHead}`} style={{ justifyContent: "center" }}>
+          <div className={`section-head ${s.whyHead}`} data-reveal style={{ justifyContent: "center" }}>
             <div className={s.whyHead}><p className="eyebrow">Why Paix Et Pearl</p><h2 className="h2">See clearly. Look exceptional.</h2></div>
           </div>
           <div className={s.whyGrid}>
@@ -92,8 +92,8 @@ export default function Home() {
               { icon: <Shield />, t: "Genuine frames", d: "Every frame is authentic and quality-checked before it leaves us." },
               { icon: <Lens />, t: "Lens fitting", d: "Send your prescription and we fit lenses to your new frames." },
               { icon: <Truck />, t: "Nationwide delivery", d: "Order from anywhere in Nigeria and we deliver to your door." },
-            ].map((w) => (
-              <div key={w.t} className={s.why}>
+            ].map((w, i) => (
+              <div key={w.t} className={s.why} data-reveal style={revealDelay(i)}>
                 <span className={s.whyIcon}>{w.icon}</span>
                 <div><h3 className="h3">{w.t}</h3><p className="muted">{w.d}</p></div>
               </div>
@@ -104,21 +104,21 @@ export default function Home() {
 
       <section className="section">
         <div className={`container ${s.styled}`}>
-          <div className={s.styledText}>
+          <div className={s.styledText} data-reveal>
             <p className="eyebrow">Styled on you</p>
             <h2 className="h2">Frames for every day, every face</h2>
             <p className="muted">From the office to Sunday brunch — find a shape that feels like you.</p>
             <div><ButtonLink variant="secondary" href="/product/amara-round">Shop Amara Round</ButtonLink></div>
           </div>
           <div className={s.styledPics}>
-            <figure className={s.styledPic}><Image src="/images/lifestyle/styled-woman.webp" alt="Woman with braids wearing tortoise round glasses in a café" fill sizes="(max-width: 900px) 50vw, 30vw" /><figcaption>Amara Round</figcaption></figure>
-            <figure className={s.styledPic}><Image src="/images/lifestyle/styled-man.webp" alt="Man in a navy blazer wearing tortoise round glasses at work" fill sizes="(max-width: 900px) 50vw, 30vw" /><figcaption>Tobi Round</figcaption></figure>
+            <figure className={s.styledPic} data-reveal="zoom" style={revealDelay(1)}><Image src="/images/lifestyle/styled-woman.webp" alt="Woman with braids wearing tortoise round glasses in a café" fill sizes="(max-width: 900px) 50vw, 30vw" /><figcaption>Amara Round</figcaption></figure>
+            <figure className={s.styledPic} data-reveal="zoom" style={revealDelay(2)}><Image src="/images/lifestyle/styled-man.webp" alt="Man in a navy blazer wearing tortoise round glasses at work" fill sizes="(max-width: 900px) 50vw, 30vw" /><figcaption>Tobi Round</figcaption></figure>
           </div>
         </div>
       </section>
 
       <section className="section" style={{ paddingTop: 0 }}>
-        <div className="container section-head">
+        <div className="container section-head" data-reveal>
           <div><p className="eyebrow">Kind words</p><h2 className="h2">From our customers</h2></div>
         </div>
         <Rail label="Customer reviews" itemWidth="clamp(290px, 30vw, 380px)">
@@ -138,9 +138,9 @@ export default function Home() {
       </section>
 
       <section className="container" style={{ paddingBottom: "var(--space-9)" }}>
-        <div className={s.cta}>
-          <span className={`ring ${s.ctaRing1}`} aria-hidden="true" />
-          <span className={`ring ${s.ctaRing2}`} aria-hidden="true" />
+        <div className={s.cta} data-reveal>
+          <span className={`ring ring-float ${s.ctaRing1}`} aria-hidden="true" />
+          <span className={`ring ring-float ${s.ctaRing2}`} style={{ animationDelay: "-7s" }} aria-hidden="true" />
           <div style={{ display: "grid", gap: "var(--space-3)", maxWidth: 560 }}>
             <h2 className="h2">Not sure which frame suits you?</h2>
             <p className="lead">Send us a selfie on WhatsApp. We’ll suggest shapes that flatter your face.</p>

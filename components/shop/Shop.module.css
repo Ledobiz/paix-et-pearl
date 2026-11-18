@@ -80,3 +80,12 @@
 @keyframes up { from { transform: translateY(100%); } to { transform: none; } }
 @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 .iconBtn { width: 44px; height: 44px; border: 0; background: transparent; color: var(--text-secondary); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 999px; }
+
+/* Motion */
+.grid > * { min-width: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .bannerMedia { animation: unveil 1.2s var(--ease-out) backwards; }
+  .bannerMedia img { animation: settle 2s var(--ease-out) backwards; }
+}
+@keyframes unveil { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0); } }
+@keyframes settle { from { transform: scale(1.14); } to { transform: scale(1); } }

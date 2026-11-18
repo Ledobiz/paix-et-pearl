@@ -8,6 +8,7 @@ import "@fontsource/jost/500.css";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import RevealObserver from "@/components/RevealObserver";
 import { CartProvider } from "@/lib/cart";
 import { site } from "@/lib/site";
 
@@ -22,8 +23,13 @@ export const viewport: Viewport = { themeColor: "#0e0e0d", width: "device-width"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-NG" data-theme="dark">
+    <html lang="en-NG" data-theme="dark" suppressHydrationWarning>
+      <head>
+        {/* Enables scroll-reveal styles before first paint; falls back to a static page if the app never hydrates. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js');setTimeout(function(){if(!window.__reveal)document.documentElement.classList.remove('js')},4000)" }} />
+      </head>
       <body>
+        <RevealObserver />
         <CartProvider>
           <a href="#main" className="sr-only skip">Skip to content</a>
           <Header />

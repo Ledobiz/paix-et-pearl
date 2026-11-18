@@ -7,7 +7,7 @@ import { parseShopQuery, toSearch } from "@/lib/shopQuery";
 import ProductCard from "@/components/ProductCard";
 import { FilterSidebar, ShopToolbar } from "@/components/shop/Filters";
 import { Close, Grid } from "@/components/icons";
-import { ButtonLink } from "@/components/ui";
+import { ButtonLink, revealDelay } from "@/components/ui";
 import s from "@/components/shop/Shop.module.css";
 
 type Props = { searchParams: Promise<Record<string, string | string[] | undefined>> };
@@ -33,7 +33,7 @@ export default async function ShopPage({ searchParams }: Props) {
     <>
       <div className="container">
         <section className={s.banner}>
-          <div className={s.bannerText}>
+          <div className={`stagger ${s.bannerText}`}>
             <p className={s.crumbs}><Link href="/">Home</Link> / <Link href="/shop">Shop</Link>{cat && <> / {cat.label}</>}</p>
             <h1 className="h1">{cat ? cat.label : "All frames"}</h1>
             <p className="muted">{cat ? cat.blurb : "Optical frames, fashion glasses and sunglasses — fitted by us, delivered to you."}</p>
@@ -70,7 +70,7 @@ export default async function ShopPage({ searchParams }: Props) {
           </div>
 
           {items.length ? (
-            <div className={s.grid}>{items.map((p, i) => <ProductCard key={p.slug} product={p} priority={i < 4} />)}</div>
+            <div className={s.grid}>{items.map((p, i) => <div key={p.slug} data-reveal style={revealDelay(i % 4)}><ProductCard product={p} priority={i < 4} /></div>)}</div>
           ) : (
             <div className={s.empty}>
               <h2 className="h3">No frames match those filters</h2>

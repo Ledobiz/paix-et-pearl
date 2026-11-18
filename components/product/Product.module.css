@@ -78,3 +78,14 @@
 .msg:focus { outline: none; border-color: var(--focus); }
 .alt { justify-self: center; font-size: 0.875rem; color: var(--accent-text); background: none; border: 0; cursor: pointer; padding: 6px 8px; text-decoration: underline; }
 @media (max-width: 559px) { .buy .buyBtns { grid-template-columns: 1fr; } }
+
+/* Motion */
+@media (prefers-reduced-motion: no-preference) {
+  .gallery { animation: fade-in 900ms var(--ease-out) backwards; }
+  .slide img { animation: settle 1.6s var(--ease-out) backwards; }
+  .toast:not(:empty) { animation: rise 400ms var(--ease-out) backwards; }
+  .scrim { animation: fade-in 250ms ease-out backwards; }
+}
+@keyframes settle { from { transform: scale(1.14); } to { transform: scale(1); } }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes fade-in { from { opacity: 0; } }

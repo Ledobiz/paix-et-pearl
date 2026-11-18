@@ -2,7 +2,7 @@
 
 import { Children, useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { ChevronLeft, ChevronRight } from "./icons";
-import { Counter, Progress, ui, cls } from "./ui";
+import { Counter, Progress, revealDelay, ui, cls } from "./ui";
 import s from "./Rail.module.css";
 
 /** Horizontal scroll-snap rail with gold progress line, counter and arrow controls. */
@@ -46,7 +46,7 @@ export default function Rail({ children, label, itemWidth, controls = "bottom", 
   return (
     <div className={className}>
       <div ref={ref} className={cls("rail", fade && "fade-r", s.track)} role="region" aria-label={label} tabIndex={0} style={{ ["--item" as string]: itemWidth }}>
-        {Children.map(children, (c) => <div className={s.item}>{c}</div>)}
+        {Children.map(children, (c, i) => <div className={s.item} data-reveal style={revealDelay(i, 3)}>{c}</div>)}
       </div>
       {controls === "bottom" && (
         <div className={`container ${s.controls}`}>

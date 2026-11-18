@@ -54,4 +54,7 @@ export function Counter({ current, total }: { current: number; total: number }) 
   return <span className={s.counter}><b>{p(current)}</b> / {p(total)}</span>;
 }
 
+/** Inline style that staggers a `data-reveal` element by `i` steps (capped so long lists don't lag). */
+export const revealDelay = (i: number, max = 5) => ({ ["--d" as string]: Math.min(i, max) });
+
 export { s as ui, cls };

@@ -68,3 +68,24 @@
 .ctaRing2 { right: -60px; top: -60px; width: 170px; height: 170px; }
 .cta > *:not(:global(.ring)) { position: relative; }
 @media (min-width: 900px) { .cta { padding: var(--space-8); grid-template-columns: 1fr auto; align-items: center; } .ctaRing1 { width: 420px; height: 420px; right: -120px; top: -160px; } .ctaRing2 { width: 300px; height: 300px; } }
+
+/* Motion */
+@media (prefers-reduced-motion: no-preference) {
+  .heroMedia { animation: unveil 1.3s var(--ease-out) 100ms backwards; }
+  .heroMedia img { animation: settle 2.2s var(--ease-out) backwards; }
+  .heroRing { animation: ring-in 1.8s var(--ease-out) 500ms backwards, ring-spin 90s linear 2.3s infinite; }
+  .trust svg { transition: transform 300ms var(--ease-out); }
+  .trust span:hover svg { transform: scale(1.15) rotate(-6deg); }
+  .whyIcon { transition: background-color 300ms ease-out, color 300ms ease-out, transform 400ms var(--ease-out); }
+  .why:hover .whyIcon { background: var(--accent-text); color: var(--bg); transform: rotate(-8deg) scale(1.06); }
+  .styledPic img { transition: transform 700ms var(--ease-out); }
+  .styledPic:hover img { transform: scale(1.04); }
+  .review { transition: border-color 300ms ease-out, transform 300ms var(--ease-out); }
+  .review:hover { border-color: var(--accent-text); transform: translateY(-4px); }
+  .reviewRing { transition: transform 900ms var(--ease-out); }
+  .review:hover .reviewRing { transform: scale(1.35); }
+}
+@keyframes unveil { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0); } }
+@keyframes settle { from { transform: scale(1.14); } to { transform: scale(1); } }
+@keyframes ring-in { from { opacity: 0; transform: rotate(-140deg) scale(0.9); } }
+@keyframes ring-spin { from { transform: rotate(-20deg); } to { transform: rotate(340deg); } }

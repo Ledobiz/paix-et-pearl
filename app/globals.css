@@ -117,3 +117,32 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
 .skip:focus { position: fixed; z-index: 100; top: 8px; left: 8px; width: auto; height: auto; clip: auto; padding: 10px 16px; background: var(--action); color: var(--on-action); border-radius: var(--radius-button); }
+
+/* ---------- motion ----------
+   All movement lives inside `no-preference`, so reduced-motion visitors get a still page.
+   Fill modes are `backwards` (never `both`) so finished animations leave no transform/opacity
+   behind — otherwise fixed/sticky children (product bar, WhatsApp sheet) would get trapped. */
+:root { --ease-out: cubic-bezier(0.22, 1, 0.36, 1); --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); }
+
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes ring-float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-14px, 12px); } }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* page enter (app/template.tsx) */
+  .page-enter { animation: fade-in 450ms var(--ease-out) backwards; }
+
+  /* staggered intro for direct children */
+  .stagger > * { animation: rise 900ms var(--ease-out) backwards; animation-delay: calc(120ms + var(--i, 0) * 90ms); }
+  .stagger > :nth-child(2) { --i: 1; } .stagger > :nth-child(3) { --i: 2; } .stagger > :nth-child(4) { --i: 3; }
+  .stagger > :nth-child(5) { --i: 4; } .stagger > :nth-child(6) { --i: 5; } .stagger > :nth-child(7) { --i: 6; }
+  .stagger > :nth-child(8) { --i: 7; } .stagger > :nth-child(n + 9) { --i: 8; }
+
+  /* scroll reveal: `.js` is set by an inline script in <head>; components/RevealObserver.tsx sets data-revealed */
+  .js [data-reveal]:not([data-revealed]) { opacity: 0; transform: translateY(28px); }
+  .js [data-reveal="fade"]:not([data-revealed]) { transform: none; }
+  .js [data-reveal="zoom"]:not([data-revealed]) { transform: scale(0.94); }
+  .js [data-reveal] { transition: opacity 900ms var(--ease-out), transform 900ms var(--ease-out); transition-delay: calc(var(--d, 0) * 90ms); }
+
+  .ring-float { animation: ring-float 14s var(--ease-in-out) infinite; }
+}

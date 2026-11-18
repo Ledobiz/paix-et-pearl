@@ -102,7 +102,7 @@ export default function ProductView({ product }: { product: Product }) {
     <>
       <div className={s.layout}>
         <Gallery product={product} activeImage={colour.image} />
-        <div className={s.info}>
+        <div className={`stagger ${s.info}`}>
           <div className={s.titleBlock}>
             <p className="eyebrow">{product.category.replace("-", " ")} · {product.gender}</p>
             <h1 className="h1">{product.name}</h1>

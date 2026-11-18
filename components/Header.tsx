@@ -50,7 +50,7 @@ export default function Header() {
         <span className={s.spacer} />
         <a className={`${s.icon} ${s.wa}`} href={generalEnquiry()} target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp"><Chat /></a>
         <Link className={s.icon} href="/cart" aria-label={`Cart, ${ready ? count : 0} ${count === 1 ? "item" : "items"}`}>
-          <Bag />{ready && count > 0 && <span className={s.count}>{count}</span>}
+          <Bag />{ready && count > 0 && <span key={count} className={s.count}>{count}</span>}
         </Link>
       </div>
 
@@ -62,8 +62,8 @@ export default function Header() {
             <Image src="/images/logo.webp" alt={site.name} width={44} height={44} />
             <Link className={s.icon} href="/cart" aria-label={`Cart, ${count} ${count === 1 ? "item" : "items"}`} onClick={() => setOpen(false)}><Bag /></Link>
           </div>
-          <nav className={s.drawerNav} aria-label="Main"><Suspense><NavLinks drawer onNavigate={() => setOpen(false)} /></Suspense></nav>
-          <div className={s.drawerFoot}>
+          <nav className={`stagger ${s.drawerNav}`} aria-label="Main"><Suspense><NavLinks drawer onNavigate={() => setOpen(false)} /></Suspense></nav>
+          <div className={`stagger ${s.drawerFoot}`}>
             <ButtonLink variant="whatsapp" block href={generalEnquiry()}>Order on WhatsApp</ButtonLink>
             <p><Clock size={18} />{site.hours[0]}</p>
             <p><Pin size={18} />{site.address}</p>

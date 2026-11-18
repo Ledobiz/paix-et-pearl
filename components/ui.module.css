@@ -1,5 +1,5 @@
 /* Button */
-.btn { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); font-family: var(--font-sans); font-weight: 500; font-size: 0.875rem; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1; white-space: nowrap; padding: var(--space-3) var(--space-5); min-height: 48px; border-radius: var(--radius-button); border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out, filter 200ms ease-out; }
+.btn { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); font-family: var(--font-sans); font-weight: 500; font-size: 0.875rem; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1; white-space: nowrap; padding: var(--space-3) var(--space-5); min-height: 48px; border-radius: var(--radius-button); border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out, filter 200ms ease-out, transform 150ms ease-out; }
 .btn:disabled, .btn[aria-disabled="true"] { opacity: 0.45; cursor: not-allowed; }
 .btn svg { width: 18px; height: 18px; flex: none; }
 .sm { min-height: 40px; padding: var(--space-2) var(--space-4); font-size: 0.75rem; }
@@ -57,3 +57,9 @@
 .option small { font-size: 0.75rem; color: var(--text-secondary); }
 .option:hover { border-color: var(--accent-text); }
 .option[aria-checked="true"] { border-color: var(--action); background: var(--line-gold); }
+
+/* Motion */
+.btn:active:not(:disabled), .round:active:not(:disabled) { transform: scale(0.97); }
+.round { transition: background-color 200ms ease-out, opacity 200ms ease-out, transform 150ms ease-out; }
+.swatch { transition: box-shadow 200ms ease-out, transform 200ms ease-out; }
+.swatch:hover { transform: scale(1.12); }
