@@ -1,0 +1,70 @@
+/* Hero */
+.hero { position: relative; overflow: hidden; }
+.heroGrid { display: grid; gap: var(--space-5); padding-block: var(--space-4) var(--space-7); align-items: center; }
+.heroMedia { position: relative; border-radius: var(--radius-card); overflow: hidden; border: 1px solid var(--line-gold); background: var(--ink-900); aspect-ratio: 1; }
+.heroMedia img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.heroRing { width: 86%; aspect-ratio: 1; top: 7%; left: 7%; border-color: var(--accent-text); border-bottom-color: transparent; transform: rotate(-20deg); opacity: 0.7; }
+.heroText { display: grid; gap: var(--space-4); }
+.heroText .lead { max-width: 480px; }
+.heroCtas { display: grid; gap: var(--space-3); margin-top: var(--space-2); }
+.trust { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-5); margin-top: var(--space-3); padding-top: var(--space-4); border-top: 1px solid var(--line-gold); }
+.trust span { display: inline-flex; align-items: center; gap: var(--space-2); font-size: 0.875rem; color: var(--text-secondary); }
+.trust svg { color: var(--accent-text); }
+@media (min-width: 900px) {
+  .heroGrid { grid-template-columns: 1fr 1fr; gap: var(--space-8); padding-block: var(--space-7) var(--space-9); }
+  .heroMedia { aspect-ratio: 4 / 5; max-height: 720px; order: 2; }
+  .heroCtas { display: flex; flex-wrap: wrap; }
+  .heroCtas > * { width: auto; padding-inline: var(--space-6); }
+  .heroText { gap: var(--space-5); }
+}
+
+/* Categories */
+.cats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4) var(--space-3); }
+@media (min-width: 900px) { .cats { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-5); } }
+.cat { display: grid; gap: var(--space-3); text-decoration: none; }
+.catMedia { position: relative; aspect-ratio: 4 / 3; border-radius: var(--radius-card); overflow: hidden; background: var(--cream-100); border: 1px solid var(--line-gold); }
+.catMedia img { object-fit: cover; transition: transform 400ms ease-out; }
+.cat:hover .catMedia img { transform: scale(1.05); }
+.catLabel { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-caps); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); }
+.catLabel svg { color: var(--accent-text); transition: transform 200ms ease-out; }
+.cat:hover .catLabel svg { transform: translateX(4px); }
+@media (min-width: 900px) { .catLabel { font-size: 0.8125rem; } }
+
+.featured { background: var(--surface); border-block: 1px solid var(--line-gold); }
+.viewAll { flex: none; }
+
+/* Why */
+.whyGrid { display: grid; gap: var(--space-5); }
+@media (min-width: 900px) { .whyGrid { grid-template-columns: repeat(3, 1fr); gap: var(--space-7); } .whyHead { text-align: center; justify-items: center; } }
+.why { display: flex; gap: var(--space-4); align-items: flex-start; }
+.whyIcon { flex: none; width: 52px; height: 52px; border-radius: 999px; border: 1px solid var(--accent-text); color: var(--accent-text); display: flex; align-items: center; justify-content: center; }
+.why h3 { margin-bottom: var(--space-1); }
+
+/* Styled on you */
+.styled { display: grid; gap: var(--space-3); }
+@media (min-width: 900px) { .styled { grid-template-columns: 1.1fr 1fr 1fr; gap: var(--space-5); align-items: end; } }
+.styledText { display: grid; gap: var(--space-3); align-content: center; padding-bottom: var(--space-4); }
+.styledPics { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+@media (min-width: 900px) { .styledPics { display: contents; } }
+.styledPic { position: relative; aspect-ratio: 4 / 5; border-radius: var(--radius-card); overflow: hidden; }
+.styledPic img { object-fit: cover; }
+.styledPic figcaption { position: absolute; left: var(--space-3); bottom: var(--space-3); padding: 6px 12px; border-radius: 999px; background: rgba(14, 14, 13, 0.75); color: var(--text); font-family: var(--font-caps); font-size: 0.625rem; letter-spacing: 0.18em; text-transform: uppercase; }
+
+/* Reviews */
+.review { position: relative; overflow: hidden; height: 100%; display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-5) var(--space-5) var(--space-5); border-radius: var(--radius-card); border: 1px solid var(--line-gold); background: var(--surface); }
+.reviewRing { right: -60px; bottom: -60px; width: 160px; height: 160px; }
+.quoteRow { display: flex; justify-content: space-between; align-items: flex-start; }
+.quoteMark { font-family: var(--font-display); font-size: 5.5rem; line-height: 0.6; height: 44px; color: var(--accent-text); }
+.stars { display: flex; gap: 2px; color: var(--accent-text); }
+.review blockquote { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 1.3125rem; line-height: 1.3; color: var(--text); flex: 1; }
+.reviewRule { height: 1px; background: var(--line-gold); }
+.who { display: flex; align-items: center; gap: var(--space-3); }
+.avatar { flex: none; width: 44px; height: 44px; border-radius: 999px; box-shadow: 0 0 0 1px var(--accent-text), 0 0 0 4px var(--surface), 0 0 0 5px var(--line-gold); background: var(--ink-800); color: var(--accent-text); display: flex; align-items: center; justify-content: center; font-family: var(--font-caps); font-size: 0.8125rem; }
+.who small { display: block; font-family: var(--font-caps); font-size: 0.625rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-secondary); }
+
+/* CTA */
+.cta { position: relative; overflow: hidden; border-radius: var(--radius-card); border: 1px solid var(--line-gold); background: var(--surface); padding: var(--space-6) var(--space-5); display: grid; gap: var(--space-4); justify-items: start; }
+.ctaRing1 { right: -100px; top: -100px; width: 240px; height: 240px; border-color: var(--accent-text); }
+.ctaRing2 { right: -60px; top: -60px; width: 170px; height: 170px; }
+.cta > *:not(:global(.ring)) { position: relative; }
+@media (min-width: 900px) { .cta { padding: var(--space-8); grid-template-columns: 1fr auto; align-items: center; } .ctaRing1 { width: 420px; height: 420px; right: -120px; top: -160px; } .ctaRing2 { width: 300px; height: 300px; } }

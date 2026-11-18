@@ -1,0 +1,4 @@
+.track { padding-block: 4px 8px; }
+.item { width: var(--item); }
+.controls { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-4); }
+@media (min-width: 768px) { .controls { gap: var(--space-4); margin-top: var(--space-5); } }

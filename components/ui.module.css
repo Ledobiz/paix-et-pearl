@@ -1,0 +1,59 @@
+/* Button */
+.btn { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); font-family: var(--font-sans); font-weight: 500; font-size: 0.875rem; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1; white-space: nowrap; padding: var(--space-3) var(--space-5); min-height: 48px; border-radius: var(--radius-button); border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out, filter 200ms ease-out; }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: 0.45; cursor: not-allowed; }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.sm { min-height: 40px; padding: var(--space-2) var(--space-4); font-size: 0.75rem; }
+.block { width: 100%; padding-inline: var(--space-3); }
+.primary { background: var(--action); color: var(--on-action); }
+.primary:hover:not(:disabled) { background: var(--action-hover); }
+.primary:active:not(:disabled) { background: var(--action-pressed); }
+.secondary { background: transparent; color: var(--accent-text); border-color: var(--accent-text); }
+.secondary:hover:not(:disabled) { background: var(--line-gold); }
+.whatsapp { background: var(--whatsapp); color: var(--on-whatsapp); }
+.whatsapp:hover:not(:disabled) { filter: brightness(1.06); }
+.ghost { background: transparent; color: var(--text); border-color: var(--line); }
+.ghost:hover:not(:disabled) { border-color: var(--accent-text); }
+
+/* Badge */
+.badge { display: inline-flex; align-items: center; font-family: var(--font-caps); font-weight: 500; font-size: 0.625rem; letter-spacing: 0.18em; text-transform: uppercase; line-height: 1; padding: 6px 10px; border-radius: var(--radius-pill); }
+.badgeGold { background: var(--gold-500); color: var(--ink-950); }
+.badgeOutline { border: 1px solid var(--gold-800); color: var(--gold-800); background: rgba(247, 242, 233, 0.85); }
+
+/* Round icon button (carousel controls) */
+.round { width: 44px; height: 44px; flex: none; border-radius: 999px; border: 1px solid var(--accent-text); background: transparent; color: var(--accent-text); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color 200ms ease-out, opacity 200ms ease-out; }
+.round:hover:not(:disabled) { background: var(--line-gold); }
+.round:disabled { opacity: 0.35; cursor: default; }
+.roundSolid { background: var(--action); color: var(--on-action); border-color: var(--action); }
+.roundSolid:hover:not(:disabled) { background: var(--action-hover); }
+
+/* Progress */
+.progress { position: relative; flex: 1; height: 2px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.progressBar { position: absolute; inset-block: 0; left: 0; background: var(--action); border-radius: 999px; transition: transform 250ms ease-out, width 250ms ease-out; }
+.counter { font-family: var(--font-caps); font-size: 0.75rem; letter-spacing: 0.18em; color: var(--text-secondary); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.counter b { color: var(--text); font-weight: 500; }
+
+/* Field */
+.field { display: grid; gap: var(--space-2); }
+.label { font-family: var(--font-caps); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-secondary); }
+.input { font-size: 1rem; color: var(--text); background: var(--field-bg); border: 1px solid var(--field-border); border-radius: var(--radius-input); padding: var(--space-3) var(--space-4); min-height: 48px; width: 100%; transition: border-color 200ms ease-out, box-shadow 200ms ease-out; appearance: none; }
+.input::placeholder { color: var(--text-muted); }
+.input:focus { outline: none; border-color: var(--focus); box-shadow: 0 0 0 1px var(--focus); }
+.invalid .input { border-color: var(--error); }
+.hint { font-size: 0.875rem; color: var(--text-muted); }
+.error { font-size: 0.875rem; color: var(--error-text); }
+.selectWrap { position: relative; }
+.selectWrap svg { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--accent-text); }
+.selectWrap .input { padding-right: 44px; cursor: pointer; }
+
+/* Swatches */
+.swatches { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.swatch { width: 22px; height: 22px; border-radius: 999px; border: 1px solid var(--line-gold); padding: 0; cursor: pointer; transition: box-shadow 200ms ease-out; }
+.swatch[aria-checked="true"] { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--action); }
+.swatchLg { width: 32px; height: 32px; }
+
+/* Option chips (radio group) */
+.options { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--space-2); }
+.option { position: relative; display: grid; gap: 2px; text-align: left; padding: var(--space-3) var(--space-4); border-radius: var(--radius-button); border: 1px solid var(--line); background: transparent; color: var(--text); cursor: pointer; font-size: 0.9375rem; transition: border-color 200ms ease-out, background-color 200ms ease-out; }
+.option small { font-size: 0.75rem; color: var(--text-secondary); }
+.option:hover { border-color: var(--accent-text); }
+.option[aria-checked="true"] { border-color: var(--action); background: var(--line-gold); }
