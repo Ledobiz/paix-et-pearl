@@ -21,7 +21,9 @@
   .price { font-size: 1rem; }
   .row { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
   .actions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
-  .actions > * { min-width: 0; padding-inline: 4px !important; font-size: 0.75rem !important; letter-spacing: 0.04em !important; gap: 4px !important; min-height: 44px !important; }
+  .actions > * { min-width: 0; justify-content: center !important; text-align: center; padding-inline: 4px !important; font-size: 0.75rem !important; letter-spacing: 0.04em !important; gap: 4px !important; min-height: 44px !important; }
+  /* too narrow for icon + label: the icon pushed "Order" off-centre, so show the label alone */
+  .actions > * svg { display: none; }
   .long { display: none; }
   .short { display: inline; }
   .badge { top: var(--space-2); left: var(--space-2); }
